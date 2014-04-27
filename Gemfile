@@ -44,4 +44,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# my custumization
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
