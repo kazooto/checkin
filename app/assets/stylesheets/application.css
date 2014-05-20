@@ -12,3 +12,6 @@
  *= require_tree .
  *= require bootstrap
  */
+body {
+  padding-top:70px;
+}

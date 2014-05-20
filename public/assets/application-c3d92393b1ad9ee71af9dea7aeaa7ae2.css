@@ -1,3 +1,21 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
+body {
+  padding-top:70px;
+}
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -5,6 +23,7 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -2376,8 +2395,8 @@ input[type="button"].btn-block {
 @font-face {
   font-family: 'Glyphicons Halflings';
 
-  src: url('./fonts/glyphicons-halflings-regular.eot');
-  src: url('./fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./fonts/glyphicons-halflings-regular.woff') format('woff'), url('./fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/stylesheets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/assets/stylesheets/fonts/glyphicons-halflings-regular.eot');
+  src: url('/assets/stylesheets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/stylesheets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/assets/stylesheets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/stylesheets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
