@@ -202,7 +202,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -255,5 +255,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # API keys
+  config.omniauth :facebook, "1414211325515604", "1a660c70360fa8cace3f38a8e115c6cc"
   config.omniauth :twitter, "zzfblii0H8gy4yKvZVXlFg", "xZXzjqjgPg0Y37Gu32HMl4Tv32HNdEURpQ5W4BIxic"
 end
