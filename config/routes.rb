@@ -1,5 +1,6 @@
 SeatIn::Application.routes.draw do
   get "home/index"
+  get "home" => "home#index"
 
   devise_for :users, :controllers => {
 #    :sessions => "users/sessions",

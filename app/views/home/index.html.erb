@@ -2,6 +2,12 @@
   <h1>Home#index <small>Find me in app/views/home/index.html.erb</small></h1>
 </div>
 
+<% content_for :sidebar do %>
+  <li class="nav-header">Books</li>
+  <li>Back</li>
+<% end %>
+
+<h1>Listing books</h1>
 <div class="jumbotron">
   <h1>Welcome to Our Web Site!</h1>
   <p>We shoud write an explanation about our web site in here.</p>
