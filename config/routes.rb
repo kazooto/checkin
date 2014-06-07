@@ -1,4 +1,6 @@
 SeatIn::Application.routes.draw do
+  resources :spots
+
   get "home/index"
   get "home" => "home#index"
 
