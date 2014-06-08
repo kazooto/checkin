@@ -1,3 +1,8 @@
+<%= content_for :side_bar do %>
+<li class="nav-header">テスト</li>
+<li><%= link_to "食べログ", "http://www.tabelog/com/" %></li>
+<%- end -%>
+
 <div class="page-header">
   <h1>Home#index <small>Find me in app/views/home/index.html.erb</small></h1>
 </div>
@@ -24,7 +29,6 @@
     <%- end -%>
   </tbody>
 </table>
-
 
 <div id="map" style='width: 100%; height: 400px;'></div>
 

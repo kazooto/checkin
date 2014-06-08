@@ -1,15 +1,30 @@
+# -*- coding: utf-8 -*-
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+#  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /spots
   # GET /spots.json
   def index
     @spots = Spot.all
+    mappable_spots = Spot.all
+    #
+    # google map
+    #
+    mappable_spots.delete_if {|spot| spot.latitude.nil? && spot.longitude.nil? }
+    @hash = Gmaps4rails.build_markers(mappable_spots) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+      marker.infowindow spot.description
+      marker.json({title: spot.name})
+    end
   end
 
   # GET /spots/1
   # GET /spots/1.json
   def show
+    #暫定対応
+    @spot = Spot.first
   end
 
   # GET /spots/new
@@ -19,6 +34,7 @@ class SpotsController < ApplicationController
 
   # GET /spots/1/edit
   def edit
+    @spot = Spot.where(:id => params[:id]).first
   end
 
   # POST /spots
@@ -40,6 +56,7 @@ class SpotsController < ApplicationController
   # PATCH/PUT /spots/1
   # PATCH/PUT /spots/1.json
   def update
+    @spot = Spot.where(:id => params[:id]).first
     respond_to do |format|
       if @spot.update(spot_params)
         format.html { redirect_to @spot, notice: 'Spot was successfully updated.' }
@@ -54,6 +71,7 @@ class SpotsController < ApplicationController
   # DELETE /spots/1
   # DELETE /spots/1.json
   def destroy
+    @spot = Spot.where(:id => params[:id]).first
     @spot.destroy
     respond_to do |format|
       format.html { redirect_to spots_url }

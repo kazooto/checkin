@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, Spot::Category.category_list, :prompt => "選択してください" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -44,6 +44,6 @@
     <%= f.text_field :longitude %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary"%>
   </div>
 <% end %>

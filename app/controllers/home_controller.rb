@@ -10,11 +10,12 @@ class HomeController < ApplicationController
   #
   def index
     @spots = Spot.all
-    
+    mappable_spots = Spot.all
     #
     # google map
     #
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    mappable_spots.delete_if {|spot| spot.latitude.nil? && spot.longitude.nil? }
+    @hash = Gmaps4rails.build_markers(mappable_spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow spot.description
