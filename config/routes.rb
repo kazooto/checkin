@@ -2,6 +2,7 @@ SeatIn::Application.routes.draw do
   resources :spots
 
   get "home/index"
+  get "home/about_us"
   get "home" => "home#index"
 
   devise_for :users, :controllers => {
@@ -65,5 +66,5 @@ SeatIn::Application.routes.draw do
   #     resources :products
   #   end
 
-  root 'home#index'
+  root 'home#about_us'
 end
