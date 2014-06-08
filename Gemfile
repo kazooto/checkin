@@ -51,3 +51,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
+## google-map
+gem 'gmaps4rails'
+gem 'geocoder'
