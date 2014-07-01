@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140607152841) do
+ActiveRecord::Schema.define(version: 20140617145743) do
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20140607152841) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "spots", ["user_id"], name: "index_spots_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

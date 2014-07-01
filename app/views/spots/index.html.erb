@@ -1,41 +1,57 @@
-<h1>Listing spots</h1>
+<%- if flash[:errors].present? -%>
+<div class="bs-callout bs-callout-danger">
+  <h4><%= flash[:errors] %></h4>
+</div>
+<%- end -%>
 
-<table>
+<div class="page-header">
+  <h1>都内のフットサルコート一覧<br />
+  <small>あなたの知ってる都内のフットサルコート情報を追加しよう！</small></h1>
+</div>
+
+<div class="new_link">
+  <p align="right"><%= link_to "フットサルコートを新規登録！", new_spot_path %></p>
+</div>
+
+<table class="table table-striped table-bordered scrollTable">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Url</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th></th>
-      <th></th>
-      <th></th>
+    <tr class="warning">
+      <th>No.</th>
+      <th>コート名</th>
+      <th>住所</th>
+      <th>TEL</th>
+      <th>HP</th>
+      <th>操作</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @spots.each do |spot| %>
-      <tr>
-        <td><%= spot.name %></td>
-        <td><%= spot.category %></td>
-        <td><%= spot.description %></td>
-        <td><%= spot.address %></td>
-        <td><%= spot.tel %></td>
-        <td><%= spot.url %></td>
-        <td><%= spot.latitude %></td>
-        <td><%= spot.longitude %></td>
-        <td><%= link_to 'Show', spot %></td>
-        <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%- @spots.each do |spot| %>
+    <tr>
+      <td><%= spot.id %></td>
+      <td><%= spot.name %></td>
+      <td><%= spot.address %></td>
+      <td><%= spot.tel %></td>
+      <td><%= link_to_if(spot.url.present?, spot.url.to_s, spot.url) %></td>
+      <td width="55px">
+        <%= link_to "[詳細]", spot_path(spot) %></br>
+	<%= link_to "[編集]", edit_spot_path(spot) if current_user.id == spot.user_id %></br>
+	<%= link_to "[削除]", spot, method: :delete, data: { confirm: "#{spot.name}を削除しますか?" } if current_user.id == spot.user_id %>
+      </td>
+    </tr>
+    <%- end -%>
   </tbody>
 </table>
 
-<br>
+<br />
+<div id="map" style='width: 100%; height: 400px;'></div>
 
-<%= link_to 'New Spot', new_spot_path %>
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  });
+</script>
+
+<br />

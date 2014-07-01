@@ -1,49 +1,51 @@
-<%= form_for(@spot) do |f| %>
-  <% if @spot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
-      <ul>
-      <% @spot.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :tel %><br>
-    <%= f.text_field :tel %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @spot.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+  <ul>
+    <% @spot.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+<table>
+  <tbody>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name, :size => "50" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :category_id %></td>
+      <td><%= f.select :category_id, Spot::Category.category_list, :prompt => "選択してください" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.text_area :description, :size => "70x3" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :address %></td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :tel %></td>
+      <td><%= f.text_field :tel %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :url %></td>
+      <td><%= f.text_field :url %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :latitude %></td>
+      <td><%= f.text_field :latitude %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :longitude %></td>
+      <td><%= f.text_field :longitude %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="buttonGroup">
+<%= button_to 'Back', spots_path, :class => "btn btn-success btn-sm", :disabled => "disabled" %>
+<%= f.submit '確認', :class => "btn btn-primary btn-sm" %>
+</div>

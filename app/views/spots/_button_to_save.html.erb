@@ -1,0 +1,7 @@
+<%= form_for(@spot, :url => @spot.new_record? ? {:action => 'create'} : {:action => 'update'}) do |f| %>
+  <% [ :name, :category_id, :description, :address, :tel, :url, :latitude, :longitude ].each do |attr| %>
+    <%= f.hidden_field attr %>
+  <% end %>
+  <%= f.submit @spot.new_record? ? '作成' : '更新', :class => "btn btn-primary btn-sm" %>
+<% end %>
+
