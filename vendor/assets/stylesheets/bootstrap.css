@@ -50,6 +50,7 @@ a:hover {
   outline: 0;
   background-color: white;
 }
+
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -180,6 +181,11 @@ optgroup {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+}
+.scrollTable tbody {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 200px;
 }
 td,
 th {

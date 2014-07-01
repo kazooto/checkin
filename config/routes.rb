@@ -1,5 +1,16 @@
 SeatIn::Application.routes.draw do
-  resources :spots
+  resources :spots do
+    new do
+      post :new
+    end
+    member do
+      patch :confirm
+      patch :edit
+    end
+    collection do
+      post :confirm
+    end
+  end
 
   get "home/index"
   get "home/about_us"

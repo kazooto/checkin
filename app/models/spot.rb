@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 class Spot < ActiveRecord::Base
   geocoded_by :address
-  after_validation :geocode
+  #after_validation :geocode
+  belongs_to :user
+
+  validates_presence_of(:name, :category_id, :address)
+  validates :tel, tel: true # custom validator
 
   def category_name
     Category::NAME[category_id.to_i]

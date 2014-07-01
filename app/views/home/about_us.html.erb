@@ -1,16 +1,8 @@
-<div class="page-header">
-  <h1>Home#about_us <small>Find me in app/views/home/about_us.html.erb</small></h1>
-</div>
-
-<% content_for :sidebar do %>
-  <li class="nav-header">Books</li>
-  <li>Back</li>
-<% end %>
-
 <div class="jumbotron">
   <h1>Welcome to SeatIn!</h1>
-  <p>We shoud write an explanation about our web site in here.</p>
-  <p>For example, what we can do in our web site.</p>
+  <p>In this site, you can make an original map is placed your favorite places.</p>
+  <p>For example, you can make an original list of footsal court in Sibuya-ku.</p>
+  <p>Let's try to use our web site, thanks.</p>
   <p class="lead" align="right"><span class="glyphicon glyphicon-copyright-mark"></span>Kazuto Kawamura<p>
-  <p><%= link_to "Go Top!", {:controller => "home", :action => "index"}, {:class => "btn btn-info btn-lg", :role => "button"} %></p>
+  <p><%= link_to "Go Top!", {:controller => "spots", :action => "index"}, {:class => "btn btn-info btn-lg", :role => "button"} %></p>
 </div>

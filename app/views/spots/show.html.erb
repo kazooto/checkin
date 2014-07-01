@@ -1,44 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @spot.name %>
-</p>
+<%= render :partial => 'spot' %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @spot.category_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @spot.description %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @spot.address %>
-</p>
-
-<p>
-  <strong>Tel:</strong>
-  <%= @spot.tel %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @spot.url %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @spot.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @spot.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_spot_path(@spot) %> |
-<%= link_to 'Back', spots_path %>
+<div class="buttonGroup">
+<%= button_to 'Top', spots_path, :method => :get, :class => "btn btn-success btn-sm" %>
+<%= button_to '編集', edit_spot_path, :method => :get, :class => "btn btn-primary btn-sm" if current_user.id == @spot.user_id %>
+</div>

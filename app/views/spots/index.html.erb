@@ -1,17 +1,23 @@
-<%= content_for :side_bar do %>
-<li class="nav-header">テスト</li>
-<li><%= link_to "食べログ", "http://www.tabelog/com/" %></li>
+<%- if flash[:errors].present? -%>
+<div class="bs-callout bs-callout-danger">
+  <h4><%= flash[:errors] %></h4>
+</div>
 <%- end -%>
 
 <div class="page-header">
-  <h1>Posts#index <small>Find me in app/views/posts/index.html.erb</small></h1>
+  <h1>都内のフットサルコート一覧<br />
+  <small>あなたの知ってる都内のフットサルコート情報を追加しよう！</small></h1>
 </div>
 
-<table class="table table-striped table-bordered">
+<div class="new_link">
+  <p align="right"><%= link_to "フットサルコートを新規登録！", new_spot_path %></p>
+</div>
+
+<table class="table table-striped table-bordered scrollTable">
   <thead>
     <tr class="warning">
-      <th>#</th>
-      <th>名前</th>
+      <th>No.</th>
+      <th>コート名</th>
       <th>住所</th>
       <th>TEL</th>
       <th>HP</th>
@@ -26,14 +32,17 @@
       <td><%= spot.address %></td>
       <td><%= spot.tel %></td>
       <td><%= link_to_if(spot.url.present?, spot.url.to_s, spot.url) %></td>
-      <td width="55px"><%= link_to "[編集]", edit_spot_path(spot) %></br>
-	<%= link_to "[削除]", spot, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td width="55px">
+        <%= link_to "[詳細]", spot_path(spot) %></br>
+	<%= link_to "[編集]", edit_spot_path(spot) if current_user.id == spot.user_id %></br>
+	<%= link_to "[削除]", spot, method: :delete, data: { confirm: "#{spot.name}を削除しますか?" } if current_user.id == spot.user_id %>
       </td>
     </tr>
     <%- end -%>
   </tbody>
 </table>
 
+<br />
 <div id="map" style='width: 100%; height: 400px;'></div>
 
 <script type="text/javascript">
