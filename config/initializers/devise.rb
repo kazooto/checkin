@@ -255,6 +255,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # API keys
-  config.omniauth :facebook, "1414211325515604", "1a660c70360fa8cace3f38a8e115c6cc"
+  #config.omniauth :facebook, "1414211325515604", "1a660c70360fa8cace3f38a8e115c6cc"
   config.omniauth :twitter, "zzfblii0H8gy4yKvZVXlFg", "xZXzjqjgPg0Y37Gu32HMl4Tv32HNdEURpQ5W4BIxic"
 end
