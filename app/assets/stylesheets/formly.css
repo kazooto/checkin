@@ -99,7 +99,7 @@
     -moz-box-shadow:0px 1px 0px #fff;
     -webkit-box-shadow:0px 1px 0px #fff;
 	}
-.formlyWrapper-Light input[type="text"], .formlyWrapper-Light input[type="password"], .formlyWrapper-Light select, .formlyWrapper-Light textarea
+.formlyWrapper-Light input[type="email"], .formlyWrapper-Light input[type="password"], .formlyWrapper-Light select, .formlyWrapper-Light textarea, .formlyWrapper-Light input[type="text"]
 	{
 	background:#fffcf4;
 	color:#444;

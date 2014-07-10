@@ -1,31 +1,40 @@
-<div class="page-header">
-  <h1>Sign in <small>ログイン画面</small></h1>
-</div>
+<link rel="stylesheet" href="formly.css" type="text/css" />
+<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="formly.js"></script>
+<script type="text/javascript">
+$(function() {
+$('#new_user').formly({
+'onBlur':false, //マウスオーバーでダイアログを出すか
+'theme':'Light' //指定なし,Light,Darkの3種類
+});
+});
+</script>
 
+
+<div class="page-header">
+  <h1>ログイン画面</h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= f.label :email %></h3>
-  </div>
-  <div class="panel-body">
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= f.label :password %></h3>
-  </div>
-  <div class="panel-body">
-    <%= f.password_field :password, autocomplete: "off" %></div>
-  </div>
-  <div class="panel-body">
-  <%- if devise_mapping.rememberable? -%>
-      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-  <%- end -%>
-  </div>
-  <div class="panel-body">
-    <span class="glyphicon glyphicon-log-in"></span><%= f.submit "Sign in" %>
-  </div>
-</div>
+  <table>
+    <tbody>
+      <tr>
+	<td width="80px"><%= f.label :email %></td>
+        <td><%= f.email_field :email, autofocus: true %></td>
+      </tr>
+      <tr>
+	<td width="80px"><%= f.label :password %></td>
+        <td><%= f.password_field :password, autocomplete: "off" %></td>
+      </tr>
+      <%- if devise_mapping.rememberable? -%>
+      <tr>
+        <td colspan="2"><%= f.check_box :remember_me %> <%= f.label :remember_me %></td>
+      </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<%= f.submit :value=>"Sign_in" %>
+<%= submit_tag "Clear", :type=>"reset" %>
 <% end %>
 
 <%= render "users/shared/links" %>
